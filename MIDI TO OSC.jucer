@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="unFK0u" name="MIDI TO OSC" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" bundleIdentifier="com.revista.midiToOsc"
+              pluginManufacturer="REVISTA" pluginManufacturerCode="RVST" pluginCode="Mtoo"
+              aaxIdentifier="com.revista.midiToOsc" pluginCharacteristicsValue="pluginWantsMidiIn">
+  <MAINGROUP id="gEmnNS" name="MIDI TO OSC">
+    <FILE id="KDt8EI" name="PingThread.h" compile="0" resource="0" file="Source/PingThread.h"/>
+    <FILE id="dYGaVz" name="CustomizableThread.h" compile="0" resource="0"
+          file="Source/CustomizableThread.h"/>
+    <FILE id="pD6Kj6" name="SystemCommand.h" compile="0" resource="0" file="Source/SystemCommand.h"/>
+    <GROUP id="{C0BD2E15-29EE-7849-F831-F58F88FA3845}" name="Knob">
+      <FILE id="m7b0hY" name="Knob.cpp" compile="1" resource="0" file="Source/Knob.cpp"/>
+      <FILE id="lzxFrS" name="Knob.h" compile="0" resource="0" file="Source/Knob.h"/>
+      <FILE id="sVxfiG" name="KnobResource.h" compile="0" resource="0" file="Source/KnobResource.h"/>
+    </GROUP>
+    <GROUP id="{DA6E8443-FDC4-1D52-4F68-0B69B1C116D6}" name="Source">
+      <FILE id="gKNLGS" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="Pjl8Lo" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+    </GROUP>
+    <FILE id="a1jdSz" name="AnimatorByCount.h" compile="0" resource="0"
+          file="Source/AnimatorByCount.h"/>
+    <FILE id="YenPrM" name="Editor.cpp" compile="1" resource="0" file="Source/Editor.cpp"/>
+    <FILE id="aSfgjJ" name="Editor.h" compile="0" resource="0" file="Source/Editor.h"/>
+    <FILE id="B2MDj8" name="ExtendToggle.h" compile="0" resource="0" file="Source/ExtendToggle.h"/>
+    <GROUP id="{DA6DF28D-EE92-B391-A576-FDF612F352B3}" name="oscpack">
+      <GROUP id="{AC46143B-2835-A5B3-AAB4-5A4315D59FF4}" name="ip">
+        <GROUP id="{0EC65BAF-EB4D-4594-A30D-D7345BD9B298}" name="posix">
+          <FILE id="SUBouf" name="NetworkingUtils.cpp" compile="1" resource="0"
+                file="Source/oscpack/ip/posix/NetworkingUtils.cpp"/>
+          <FILE id="wRY5hh" name="UdpSocket.cpp" compile="1" resource="0" file="Source/oscpack/ip/posix/UdpSocket.cpp"/>
+        </GROUP>
+        <FILE id="bsLs6E" name="IpEndpointName.cpp" compile="1" resource="0"
+              file="Source/oscpack/ip/IpEndpointName.cpp"/>
+        <FILE id="r1uNme" name="IpEndpointName.h" compile="0" resource="0"
+              file="Source/oscpack/ip/IpEndpointName.h"/>
+        <FILE id="cQ5zCi" name="NetworkingUtils.h" compile="0" resource="0"
+              file="Source/oscpack/ip/NetworkingUtils.h"/>
+        <FILE id="j2ipq3" name="PacketListener.h" compile="0" resource="0"
+              file="Source/oscpack/ip/PacketListener.h"/>
+        <FILE id="J7zMBT" name="TimerListener.h" compile="0" resource="0" file="Source/oscpack/ip/TimerListener.h"/>
+        <FILE id="XHff66" name="UdpSocket.h" compile="0" resource="0" file="Source/oscpack/ip/UdpSocket.h"/>
+      </GROUP>
+      <GROUP id="{B04BEBCB-59FB-57A2-07CB-7F3E174001BE}" name="osc">
+        <FILE id="QBPbux" name="MessageMappingOscPacketListener.h" compile="0"
+              resource="0" file="Source/oscpack/osc/MessageMappingOscPacketListener.h"/>
+        <FILE id="eUe2bd" name="OscException.h" compile="0" resource="0" file="Source/oscpack/osc/OscException.h"/>
+        <FILE id="U3ewbO" name="OscHostEndianness.h" compile="0" resource="0"
+              file="Source/oscpack/osc/OscHostEndianness.h"/>
+        <FILE id="JR7kmz" name="OscOutboundPacketStream.cpp" compile="1" resource="0"
+              file="Source/oscpack/osc/OscOutboundPacketStream.cpp"/>
+        <FILE id="Dt4UG4" name="OscOutboundPacketStream.h" compile="0" resource="0"
+              file="Source/oscpack/osc/OscOutboundPacketStream.h"/>
+        <FILE id="KlWEzt" name="OscPacketListener.h" compile="0" resource="0"
+              file="Source/oscpack/osc/OscPacketListener.h"/>
+        <FILE id="t0Qv2u" name="OscPrintReceivedElements.cpp" compile="1" resource="0"
+              file="Source/oscpack/osc/OscPrintReceivedElements.cpp"/>
+        <FILE id="S4GeA7" name="OscPrintReceivedElements.h" compile="0" resource="0"
+              file="Source/oscpack/osc/OscPrintReceivedElements.h"/>
+        <FILE id="vG4Xs8" name="OscReceivedElements.cpp" compile="1" resource="0"
+              file="Source/oscpack/osc/OscReceivedElements.cpp"/>
+        <FILE id="SWLAQs" name="OscReceivedElements.h" compile="0" resource="0"
+              file="Source/oscpack/osc/OscReceivedElements.h"/>
+        <FILE id="uq87ld" name="OscTypes.cpp" compile="1" resource="0" file="Source/oscpack/osc/OscTypes.cpp"/>
+        <FILE id="RIBV3P" name="OscTypes.h" compile="0" resource="0" file="Source/oscpack/osc/OscTypes.h"/>
+      </GROUP>
+    </GROUP>
+    <FILE id="ltewZ5" name="OscSender.h" compile="0" resource="0" file="Source/OscSender.h"/>
+    <FILE id="pQJgsc" name="Parameter.h" compile="0" resource="0" file="Source/Parameter.h"/>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <VS2017 targetFolder="Builds/VisualStudio2017">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="MIDI TO OSC"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="MIDI TO OSC"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../modules"/>
+        <MODULEPATH id="juce_core" path="../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../modules"/>
+        <MODULEPATH id="juce_events" path="../../modules"/>
+        <MODULEPATH id="juce_graphics" path="../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../modules"/>
+      </MODULEPATHS>
+    </VS2017>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="MIDI TO OSC"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="MIDI TO OSC"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../modules"/>
+        <MODULEPATH id="juce_core" path="../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../modules"/>
+        <MODULEPATH id="juce_events" path="../../modules"/>
+        <MODULEPATH id="juce_graphics" path="../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <LIVE_SETTINGS>
+    <OSX/>
+  </LIVE_SETTINGS>
+</JUCERPROJECT>
