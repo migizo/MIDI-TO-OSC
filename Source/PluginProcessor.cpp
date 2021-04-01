@@ -177,11 +177,9 @@ void MIDITOOSCAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
             juce::String addr("/");
             addr += idText;
             addr += juce::String("/noteon");
-            std::vector<float> msgValues;
-            msgValues.reserve(2);
-            msgValues.emplace_back(message.getNoteNumber());
-            msgValues.emplace_back(message.getVelocity());
-            oscSender.send(addr.toRawUTF8(), msgValues);
+            if (! oscSender.send(addr.toRawUTF8(), message.getNoteNumber(), message.getVelocity())) {
+                cout << "Error: could not send OSC message" << endl;
+            }
 
         }
         // else stop

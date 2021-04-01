@@ -39,7 +39,6 @@ Editor::Editor (MIDITOOSCAudioProcessor& p, juce::AudioProcessorValueTreeState& 
     parameter01->setRange (0, 1, 0.001);
     parameter01->setSliderStyle (juce::Slider::Rotary);
     parameter01->setTextBoxStyle (juce::Slider::TextBoxBelow, false, 50, 16);
-    parameter01->addListener (this);
 
     parameter01->setBounds (72, 366, 50, 70);
 
@@ -48,7 +47,6 @@ Editor::Editor (MIDITOOSCAudioProcessor& p, juce::AudioProcessorValueTreeState& 
     parameter02->setRange (0, 1, 0.001);
     parameter02->setSliderStyle (juce::Slider::Rotary);
     parameter02->setTextBoxStyle (juce::Slider::TextBoxBelow, false, 50, 16);
-    parameter02->addListener (this);
 
     parameter02->setBounds (218, 366, 50, 70);
 
@@ -57,7 +55,6 @@ Editor::Editor (MIDITOOSCAudioProcessor& p, juce::AudioProcessorValueTreeState& 
     parameter03->setRange (0, 1, 0.001);
     parameter03->setSliderStyle (juce::Slider::Rotary);
     parameter03->setTextBoxStyle (juce::Slider::TextBoxBelow, false, 50, 16);
-    parameter03->addListener (this);
 
     parameter03->setBounds (72, 488, 50, 70);
 
@@ -66,7 +63,6 @@ Editor::Editor (MIDITOOSCAudioProcessor& p, juce::AudioProcessorValueTreeState& 
     parameter04->setRange (0, 1, 0.001);
     parameter04->setSliderStyle (juce::Slider::Rotary);
     parameter04->setTextBoxStyle (juce::Slider::TextBoxBelow, false, 50, 16);
-    parameter04->addListener (this);
 
     parameter04->setBounds (218, 488, 50, 70);
 
@@ -174,7 +170,10 @@ Editor::Editor (MIDITOOSCAudioProcessor& p, juce::AudioProcessorValueTreeState& 
     parameter03Attachment.reset(new KnobAttachment(valueTreeState, "/parameter03", *parameter03.get()));
     parameter04Attachment.reset(new KnobAttachment(valueTreeState, "/parameter04", *parameter04.get()));
 
-    processor.oscSender.connect(hostTextEditor->getText().toRawUTF8(), portTextEditor->getText().getIntValue());
+    if(! processor.oscSender.connect(hostTextEditor->getText().toRawUTF8(), portTextEditor->getText().getIntValue())) {
+        cout << "Error: could not connect to UDP port." << endl;
+    }
+    processor.idText = idTextEditor->getText();
     ping.setHostName(hostTextEditor->getText());
 
     /*
@@ -280,40 +279,6 @@ void Editor::resized()
     //[/UserResized]
 }
 
-void Editor::sliderValueChanged (juce::Slider* sliderThatWasMoved)
-{
-    //[UsersliderValueChanged_Pre]
-    //[/UsersliderValueChanged_Pre]
-
-    if (sliderThatWasMoved == parameter01.get())
-    {
-        //[UserSliderCode_parameter01] -- add your slider handling code here..
-       // processor.getParameters().getReference(0)->setValueNotifyingHost((float)parameter01->getValue());
-        //[/UserSliderCode_parameter01]
-    }
-    else if (sliderThatWasMoved == parameter02.get())
-    {
-        //[UserSliderCode_parameter02] -- add your slider handling code here..
-        // processor.getParameters().getReference(1)->setValueNotifyingHost((float)parameter02->getValue());
-        //[/UserSliderCode_parameter02]
-    }
-    else if (sliderThatWasMoved == parameter03.get())
-    {
-        //[UserSliderCode_parameter03] -- add your slider handling code here..
-        // processor.getParameters().getReference(2)->setValueNotifyingHost((float)parameter03->getValue());
-        //[/UserSliderCode_parameter03]
-    }
-    else if (sliderThatWasMoved == parameter04.get())
-    {
-        //[UserSliderCode_parameter04] -- add your slider handling code here..
-        // processor.getParameters().getReference(3)->setValueNotifyingHost((float)parameter04->getValue());
-        //[/UserSliderCode_parameter04]
-    }
-
-    //[UsersliderValueChanged_Post]
-    //[/UsersliderValueChanged_Post]
-}
-
 void Editor::buttonClicked (juce::Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
@@ -364,18 +329,24 @@ void Editor::textEditorFocusLost(juce::TextEditor& t) {
 }
 
 void Editor::onChangeTextEdit(juce::TextEditor& t) {
+    t.setText(t.getText().trim());
+    
     if (&t == hostTextEditor.get())
     {
         auto& osc = processor.oscSender;
         osc.disconnect();
-        osc.connect(t.getText().toRawUTF8(), osc.getPort());
+        if(! osc.connect(t.getText().toRawUTF8(), portTextEditor->getText().getIntValue())) {
+            cout << "Error: could not connect to UDP port." << endl;
+        }
         ping.setHostName(t.getText());
     }
     else if (&t == portTextEditor.get())
     {
         auto& osc = processor.oscSender;
         osc.disconnect();
-        osc.connect(osc.getHostName(), t.getText().getIntValue());
+        if (! osc.connect(hostTextEditor->getText().toRawUTF8(), t.getText().getIntValue())) {
+            cout << "Error: could not connect to UDP port." << endl;
+        }
     }
     else if (&t == idTextEditor.get())
     {
@@ -464,22 +435,22 @@ BEGIN_JUCER_METADATA
           virtualName="" explicitFocusOrder="0" pos="72 366 50 70" min="0.0"
           max="1.0" int="0.001" style="Rotary" textBoxPos="TextBoxBelow"
           textBoxEditable="1" textBoxWidth="50" textBoxHeight="16" skewFactor="1.0"
-          needsCallback="1"/>
+          needsCallback="0"/>
   <SLIDER name="parameter02" id="20e264b94183a3ca" memberName="parameter02"
           virtualName="" explicitFocusOrder="0" pos="218 366 50 70" min="0.0"
           max="1.0" int="0.001" style="Rotary" textBoxPos="TextBoxBelow"
           textBoxEditable="1" textBoxWidth="50" textBoxHeight="16" skewFactor="1.0"
-          needsCallback="1"/>
+          needsCallback="0"/>
   <SLIDER name="parameter03" id="3f7a2a3d2cebe12b" memberName="parameter03"
           virtualName="" explicitFocusOrder="0" pos="72 488 50 70" min="0.0"
           max="1.0" int="0.001" style="Rotary" textBoxPos="TextBoxBelow"
           textBoxEditable="1" textBoxWidth="50" textBoxHeight="16" skewFactor="1.0"
-          needsCallback="1"/>
+          needsCallback="0"/>
   <SLIDER name="parameter04" id="8197577a1b6b0682" memberName="parameter04"
           virtualName="" explicitFocusOrder="0" pos="218 488 50 70" min="0.0"
           max="1.0" int="0.001" style="Rotary" textBoxPos="TextBoxBelow"
           textBoxEditable="1" textBoxWidth="50" textBoxHeight="16" skewFactor="1.0"
-          needsCallback="1"/>
+          needsCallback="0"/>
   <IMAGEBUTTON name="extendToggle" id="ce5b633b7a9a7c86" memberName="extendToggle"
                virtualName="" explicitFocusOrder="0" pos="25 270 288 68" buttonText="extend"
                connectedEdges="0" needsCallback="1" radioGroupId="0" keepProportions="1"

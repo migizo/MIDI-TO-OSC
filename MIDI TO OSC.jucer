@@ -3,7 +3,8 @@
 <JUCERPROJECT id="unFK0u" name="MIDI TO OSC" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" bundleIdentifier="com.revista.midiToOsc"
               pluginManufacturer="REVISTA" pluginManufacturerCode="RVST" pluginCode="Mtoo"
-              aaxIdentifier="com.revista.midiToOsc" pluginCharacteristicsValue="pluginWantsMidiIn">
+              aaxIdentifier="com.revista.midiToOsc" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+              pluginAUMainType="'aumu'">
   <MAINGROUP id="gEmnNS" name="MIDI TO OSC">
     <FILE id="KDt8EI" name="PingThread.h" compile="0" resource="0" file="Source/PingThread.h"/>
     <FILE id="dYGaVz" name="CustomizableThread.h" compile="0" resource="0"
@@ -25,50 +26,6 @@
     <FILE id="YenPrM" name="Editor.cpp" compile="1" resource="0" file="Source/Editor.cpp"/>
     <FILE id="aSfgjJ" name="Editor.h" compile="0" resource="0" file="Source/Editor.h"/>
     <FILE id="B2MDj8" name="ExtendToggle.h" compile="0" resource="0" file="Source/ExtendToggle.h"/>
-    <GROUP id="{DA6DF28D-EE92-B391-A576-FDF612F352B3}" name="oscpack">
-      <GROUP id="{AC46143B-2835-A5B3-AAB4-5A4315D59FF4}" name="ip">
-        <GROUP id="{0EC65BAF-EB4D-4594-A30D-D7345BD9B298}" name="posix">
-          <FILE id="SUBouf" name="NetworkingUtils.cpp" compile="1" resource="0"
-                file="Source/oscpack/ip/posix/NetworkingUtils.cpp"/>
-          <FILE id="wRY5hh" name="UdpSocket.cpp" compile="1" resource="0" file="Source/oscpack/ip/posix/UdpSocket.cpp"/>
-        </GROUP>
-        <FILE id="bsLs6E" name="IpEndpointName.cpp" compile="1" resource="0"
-              file="Source/oscpack/ip/IpEndpointName.cpp"/>
-        <FILE id="r1uNme" name="IpEndpointName.h" compile="0" resource="0"
-              file="Source/oscpack/ip/IpEndpointName.h"/>
-        <FILE id="cQ5zCi" name="NetworkingUtils.h" compile="0" resource="0"
-              file="Source/oscpack/ip/NetworkingUtils.h"/>
-        <FILE id="j2ipq3" name="PacketListener.h" compile="0" resource="0"
-              file="Source/oscpack/ip/PacketListener.h"/>
-        <FILE id="J7zMBT" name="TimerListener.h" compile="0" resource="0" file="Source/oscpack/ip/TimerListener.h"/>
-        <FILE id="XHff66" name="UdpSocket.h" compile="0" resource="0" file="Source/oscpack/ip/UdpSocket.h"/>
-      </GROUP>
-      <GROUP id="{B04BEBCB-59FB-57A2-07CB-7F3E174001BE}" name="osc">
-        <FILE id="QBPbux" name="MessageMappingOscPacketListener.h" compile="0"
-              resource="0" file="Source/oscpack/osc/MessageMappingOscPacketListener.h"/>
-        <FILE id="eUe2bd" name="OscException.h" compile="0" resource="0" file="Source/oscpack/osc/OscException.h"/>
-        <FILE id="U3ewbO" name="OscHostEndianness.h" compile="0" resource="0"
-              file="Source/oscpack/osc/OscHostEndianness.h"/>
-        <FILE id="JR7kmz" name="OscOutboundPacketStream.cpp" compile="1" resource="0"
-              file="Source/oscpack/osc/OscOutboundPacketStream.cpp"/>
-        <FILE id="Dt4UG4" name="OscOutboundPacketStream.h" compile="0" resource="0"
-              file="Source/oscpack/osc/OscOutboundPacketStream.h"/>
-        <FILE id="KlWEzt" name="OscPacketListener.h" compile="0" resource="0"
-              file="Source/oscpack/osc/OscPacketListener.h"/>
-        <FILE id="t0Qv2u" name="OscPrintReceivedElements.cpp" compile="1" resource="0"
-              file="Source/oscpack/osc/OscPrintReceivedElements.cpp"/>
-        <FILE id="S4GeA7" name="OscPrintReceivedElements.h" compile="0" resource="0"
-              file="Source/oscpack/osc/OscPrintReceivedElements.h"/>
-        <FILE id="vG4Xs8" name="OscReceivedElements.cpp" compile="1" resource="0"
-              file="Source/oscpack/osc/OscReceivedElements.cpp"/>
-        <FILE id="SWLAQs" name="OscReceivedElements.h" compile="0" resource="0"
-              file="Source/oscpack/osc/OscReceivedElements.h"/>
-        <FILE id="uq87ld" name="OscTypes.cpp" compile="1" resource="0" file="Source/oscpack/osc/OscTypes.cpp"/>
-        <FILE id="RIBV3P" name="OscTypes.h" compile="0" resource="0" file="Source/oscpack/osc/OscTypes.h"/>
-      </GROUP>
-    </GROUP>
-    <FILE id="ltewZ5" name="OscSender.h" compile="0" resource="0" file="Source/OscSender.h"/>
-    <FILE id="pQJgsc" name="Parameter.h" compile="0" resource="0" file="Source/Parameter.h"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
@@ -90,6 +47,7 @@
         <MODULEPATH id="juce_graphics" path="../../modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../modules"/>
+        <MODULEPATH id="juce_osc" path="../../modules"/>
       </MODULEPATHS>
     </VS2017>
     <XCODE_MAC targetFolder="Builds/MacOSX">
@@ -110,6 +68,7 @@
         <MODULEPATH id="juce_graphics" path="../../modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../modules"/>
+        <MODULEPATH id="juce_osc" path="../../modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
@@ -127,6 +86,7 @@
     <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <LIVE_SETTINGS>
     <OSX/>

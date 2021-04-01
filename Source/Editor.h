@@ -43,7 +43,6 @@ typedef juce::AudioProcessorValueTreeState::SliderAttachment KnobAttachment;
 class Editor  : public juce::AudioProcessorEditor,
                 private juce::Timer,
                 public juce::TextEditor::Listener,
-                public juce::Slider::Listener,
                 public juce::Button::Listener
 {
 public:
@@ -62,7 +61,6 @@ public:
 
     void paint (juce::Graphics& g) override;
     void resized() override;
-    void sliderValueChanged (juce::Slider* sliderThatWasMoved) override;
     void buttonClicked (juce::Button* buttonThatWasClicked) override;
 
     // Binary resources:

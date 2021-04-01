@@ -9,8 +9,7 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "OscSender.h"
-#include "Parameter.h"
+using namespace std;
 //==============================================================================
 /**
 */
@@ -61,13 +60,12 @@ public:
         addr += juce::String("/parameter0");
         addr += juce::String(paramID);
         
-        std::vector<float> msgValues;
-        msgValues.reserve(1);
-        msgValues.emplace_back(paramValue);
-        oscSender.send(addr.toRawUTF8(), msgValues);
+        if(! oscSender.send(addr.toRawUTF8(), paramValue)) {
+            cout << "Error: could not send OSC message" << endl;
+        }
     }
-
-    OscSender oscSender;
+    
+    juce::OSCSender oscSender;
     juce::String idText;
 private:
     juce::AudioProcessorValueTreeState parameters;
